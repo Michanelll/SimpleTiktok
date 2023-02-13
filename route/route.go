@@ -6,6 +6,7 @@ import (
 	"gorm-learn/handler/login"
 	"gorm-learn/handler/user"
 	"gorm-learn/handler/video"
+	"gorm-learn/middleware"
 )
 
 func InitRoute() *gin.Engine {
@@ -14,8 +15,8 @@ func InitRoute() *gin.Engine {
 	// basic apis
 	r.GET("/feed/", video.FeedHandler)
 	r.GET("/user/", user.GetUserInfoHandler)
-	r.POST("/user/register/", login.UserRegisterHandler)
-	r.POST("/user/login/", login.UserLoginHandler)
+	r.POST("/user/register/", middleware.Sha(), login.UserRegisterHandler)
+	r.POST("/user/login/", middleware.Sha(), login.UserLoginHandler)
 	r.POST("/publish/action/", video.PublishVideoHandler)
 	r.GET("/publish/list/", video.GetVideoListHandler)
 

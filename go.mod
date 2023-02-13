@@ -3,6 +3,7 @@ module gorm-learn
 go 1.18
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.8.2
 	gorm.io/driver/mysql v1.4.5
 	gorm.io/gorm v1.24.3
